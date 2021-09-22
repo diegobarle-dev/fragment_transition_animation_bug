@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "uk.co.diegobarle.fragment_animation"
+        minSdk 23
+        targetSdk 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+//    implementation 'androidx.core:core-ktx:1.6.0'
+//    implementation 'androidx.appcompat:appcompat:1.3.1'
+//    implementation 'com.google.android.material:material:1.4.0'
+//
+//    implementation 'androidx.fragment:fragment-ktx:1.3.6'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+//
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    def appDependencies = rootProject.ext.core
+    def uiDependencies = rootProject.ext.presentation
+    def testDependencies = rootProject.ext.unitTesting
+    def uiTestDependencies = rootProject.ext.uiTesting
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // UTILS
+    implementation appDependencies.firebase_analytics
+    implementation appDependencies.threetenabp
+    implementation appDependencies.dynatrace_agent
+
+    // UI
+    implementation uiDependencies.supported_android
+    implementation uiDependencies.supported_legacy_android
+    implementation uiDependencies.constraint_layout
+    implementation uiDependencies.material
+    implementation uiDependencies.recyclerview
+    implementation uiDependencies.swipeView
+    implementation uiDependencies.shimmer
+    implementation uiDependencies.fragment
+
+    // lifecycle
+    implementation uiDependencies.lifecycle_viewmodel
+    implementation uiDependencies.lifecycle_compiler
+
+    // Navigation
+    implementation uiDependencies.navigation_fragment
+    implementation uiDependencies.navigation_ui
+
+    // Dagger
+    implementation appDependencies.dagger
+    implementation appDependencies.dagger_android_support
+
+    kapt appDependencies.dagger_compiler
+    kapt appDependencies.dagger_android_processor
+
+    // Retrofit
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofit_converter_gson
+    implementation appDependencies.http_logger
+
+    // Tests
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockito
+    testImplementation testDependencies.androidx_testing
+    testImplementation testDependencies.coroutines_test
+    testImplementation testDependencies.mockitokotlin
+    testImplementation testDependencies.threeten_test
+    testImplementation testDependencies.mockk
+    testImplementation testDependencies.reflect
+
+    // UI Tests
+    androidTestImplementation uiTestDependencies.test_runner
+    androidTestImplementation uiTestDependencies.espresso
+    androidTestImplementation uiTestDependencies.fragment_testing
+    androidTestImplementation uiTestDependencies.test_rules
+    androidTestImplementation uiTestDependencies.junit_ext
+    androidTestImplementation uiTestDependencies.ui_automator
+    androidTestImplementation uiTestDependencies.coroutines_test
+    androidTestImplementation uiTestDependencies.androidx_testing
+    androidTestImplementation uiTestDependencies.mockito_android
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentOne">
+
+    <fragment
+    android:id="@+id/fragmentOne"
+    android:name="uk.co.diegobarle.fragment_animation.FragmentOne"
+    android:label="Fragment 1"
+    tools:layout="@layout/fragment_one">
+
+        <action
+            android:id="@+id/action_fragment_one_to_fragment_two"
+            app:destination="@id/fragmentTwo"
+            app:popUpTo="@+id/fragmentTwo"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentTwo"
+        android:name="uk.co.diegobarle.fragment_animation.FragmentTwo"
+        android:label="Fragment 2"
+        tools:layout="@layout/fragment_two" />
+
+</navigation>
