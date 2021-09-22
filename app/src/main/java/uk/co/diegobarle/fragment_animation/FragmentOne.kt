@@ -40,7 +40,7 @@ class FragmentOne: Fragment() {
             direction.actionId,
             direction.arguments,
             null,
-            //FragmentNavigatorExtras(binding.image to SHARED_IMAGE_NAME) //The origin of the bug - not passing a shared element
+            FragmentNavigatorExtras(binding.image to SHARED_IMAGE_NAME) //The origin of the bug - not passing a shared element
         )
     }
 }

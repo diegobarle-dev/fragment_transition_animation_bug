@@ -56,6 +56,7 @@ class FragmentTwo: Fragment() {
             duration = resources.getInteger(android.R.integer.config_mediumAnimTime).toLong()
             interpolator = AccelerateInterpolator()
         }
+        binding.viewBackground.alpha = 1f
         anim.start()
     }
 }
